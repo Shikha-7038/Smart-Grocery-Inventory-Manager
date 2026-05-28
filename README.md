@@ -218,12 +218,13 @@ npm --version
 
 # Check MongoDB Atlas account
 # Create account at https://www.mongodb.com/cloud/atlas
-Step 1: Clone the Repository
-bash
+
+## Step 1: Clone the Repository
+
 git clone https://github.com/yourusername/Smart-Grocery-Inventory-Manager.git
 cd Smart-Grocery-Inventory-Manager
-Step 2: Backend Setup
-bash
+
+## Step 2: Backend Setup
 # Navigate to server folder
 cd server
 
@@ -244,8 +245,8 @@ JWT_SECRET=your_super_secret_key_change_this
 JWT_EXPIRE=30d
 CLIENT_URL=http://localhost:5173
 NODE_ENV=development
+
 Step 3: Frontend Setup
-bash
 # Navigate to client folder (from root)
 cd client
 
@@ -261,86 +262,63 @@ cp .env.example .env
 env
 VITE_API_URL=http://localhost:5000/api
 
-Step 4: MongoDB Setup
-Create MongoDB Atlas account (if not already)
+## Step 4: MongoDB Setup
+ - Create MongoDB Atlas account (if not already)
+ - Create a new cluster (free tier works)
+ - Create database: grocery_inventory_db
+ - Get connection string
+ - Whitelist your IP address (0.0.0.0/0 for development)
+ - Add connection string to server/.env
 
-Create a new cluster (free tier works)
-
-Create database: grocery_inventory_db
-
-Get connection string
-
-Whitelist your IP address (0.0.0.0/0 for development)
-
-Add connection string to server/.env
-
-Step 5: Run the Application
+## Step 5: Run the Application
 Terminal 1 - Backend:
 
-bash
 cd server
 npm run dev
 Terminal 2 - Frontend:
 
-bash
 cd client
 npm run dev
 
-Step 6: Access the Application
-Frontend: http://localhost:5173
-
-Backend API: http://localhost:5000/api
-
-Health Check: http://localhost:5000/api/health
+## Step 6: Access the Application
+ - Frontend: http://localhost:5173
+ - Backend API: http://localhost:5000/api
+ - Health Check: http://localhost:5000/api/health
 ```
 
 ## 🎯 Usage Guide
-1. User Registration
-Navigate to /register
+# 1. User Registration
+ - Navigate to /register
+ - Fill in name, email, and password
+ - Click "Create Account"
 
-Fill in name, email, and password
+# 2. Adding Grocery Items
+ - Go to "Groceries" page
+ - Click "+ Add New Item"
+ - Fill item details (name, category, quantity, etc.)
+ - Click "Add Item"
 
-Click "Create Account"
+# 3. Managing Inventory
+ - Go to "Inventory" page
+ - Use +/- buttons to update quantities
+ - View stock status indicators
+ - Check expiry dates
 
-2. Adding Grocery Items
-Go to "Groceries" page
+# 4. Generating Shopping List
+ - Go to "Shopping List" page
+ - View automatically generated list from low-stock items
+ - Select items to purchase
+ - Download PDF or share list
 
-Click "+ Add New Item"
-
-Fill item details (name, category, quantity, etc.)
-
-Click "Add Item"
-
-3. Managing Inventory
-Go to "Inventory" page
-
-Use +/- buttons to update quantities
-
-View stock status indicators
-
-Check expiry dates
-
-4. Generating Shopping List
-Go to "Shopping List" page
-
-View automatically generated list from low-stock items
-
-Select items to purchase
-
-Download PDF or share list
-
-5. Monitoring Alerts
-Dashboard shows alert counts
-
-Low stock items trigger alerts
-
-Expiring items show warnings
-
-Click alerts to view details
+# 5. Monitoring Alerts
+ - Dashboard shows alert counts
+ - Low stock items trigger alerts
+ - Expiring items show warnings
+ - Click alerts to view details
 
 ## 📊 Database Schema
 ## Users Collection
-
+```
 {
   _id: ObjectId,
   name: String,
@@ -349,9 +327,10 @@ Click alerts to view details
   createdAt: Date,
   updatedAt: Date
 }
+```
 
 ## GroceryItems Collection
-
+```
 {
   _id: ObjectId,
   user: ObjectId (ref: User),
@@ -367,6 +346,7 @@ Click alerts to view details
   createdAt: Date,
   updatedAt: Date
 }
+```
 
 ## 🔒 Security Features
  - ✅ JWT-based authentication
@@ -397,25 +377,19 @@ npm run build
 ```
 
 ## 🤝 Contributing
-Fork the repository
-
-Create your feature branch (git checkout -b feature/AmazingFeature)
-
-Commit changes (git commit -m 'Add AmazingFeature')
-
-Push to branch (git push origin feature/AmazingFeature)
-
-Open a Pull Request
+ - Fork the repository
+ - Create your feature branch (git checkout -b feature/AmazingFeature)
+ - Commit changes (git commit -m 'Add AmazingFeature')
+ - Push to branch (git push origin feature/AmazingFeature)
+ - Open a Pull Request
 
 ## 📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+ - This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
-MongoDB Atlas for free database hosting
-
-React and Node.js communities
-
-All contributors and testers
+ - MongoDB Atlas for free database hosting
+ - React and Node.js communities
+ - All contributors and testers
 
 ## 🎓 Learning Outcomes
 This project demonstrates:
@@ -432,19 +406,19 @@ This project demonstrates:
  - ✅ Project documentation
 
 ## ⭐ Show Your Support
-If this project helped you, please give it a ⭐ on GitHub!
+ - If this project helped you, please give it a ⭐ on GitHub!
 
 ## 🚨 Common Issues & Solutions
-Issue 1: MongoDB Connection Error
+ - **Issue 1:** MongoDB Connection Error
 Solution: Check your MONGO_URI in .env and whitelist your IP in MongoDB Atlas
 
-Issue 2: CORS Error
+ - **Issue 2:** CORS Error
 Solution: Ensure CLIENT_URL matches your frontend URL in server/.env
 
-Issue 3: Token Expired
+ - **Issue 3:** Token Expired
 Solution: Login again to get a fresh token
 
-Issue 4: Port Already in Use
+ - **Issue 4:** Port Already in Use
 Solution: Change PORT in .env or kill process using the port
 
-Made with ❤️ for better grocery management
+ - Made with ❤️ for better grocery management
